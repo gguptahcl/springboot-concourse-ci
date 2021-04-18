@@ -1,7 +1,8 @@
 #!/bin/bash
 #!/bin/sh
 
-chmod +x concourse-ci/sonarscan.sh
+ls
+chmod +x concourse-ci/tasks/sonarscan.sh
 chmod +x ./mvnw
 
 set -e

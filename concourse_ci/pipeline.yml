@@ -20,13 +20,7 @@ resources:
       login: ((sonarqube-login))
       password:  ((sonarqube-pwd))
 
-  - name: spring-boot-service-docker-repository
-    type: docker-image
-    source:
-      email: ((docker-hub-email))
-      username: ((docker-hub-username))
-      password: ((docker-hub-password))
-      repository: ((docker-hub-username))/((docker-hub-repo-name))
+
 
 
 jobs:
@@ -92,4 +86,4 @@ jobs:
         - test
       trigger: true
     - task: code-scan
-      file: spring-boot-service/concourse_ci/sonarscan.yml
+      file: spring-boot-service/concourse_ci/tasks/sonarscan.yml

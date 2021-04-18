@@ -1,0 +1,9 @@
+# Docker
+docker-hub-email: ggupta0109@gmail.com
+docker-hub-username: ggupta0109
+docker-hub-password: Newpass10
+docker-hub-repo-name: concourse
+
+sonarqube-auth-token: 09d7e97c85981a3bdd5e00de1583e7f5e7cfc2a6
+sonarqube-login: admin  
+sonarqube-pwd: admin1234    

@@ -12,4 +12,8 @@ outputs:
   - name: sonar-scan-output
 
 run:
-  path: spring-boot-service/concourse_ci/tasks/sonarscan.sh
+  #path: spring-boot-service/concourse_ci/tasks/sonarscan.sh
+  path: /bin/sh
+  args: ["spring-boot-service/concourse_ci/tasks/sonarscan.sh"]
+  
+  

@@ -27,9 +27,9 @@ jobs:
     plan:
      - get: spring-boot-service
        passed:
-         - build
+         - test
        trigger: true
-     - task: Unit-Testing
+     - task: unit-testing
        file: spring-boot-service/concourse_ci/tasks/unittest.yml
        
   - name: sonar-scan

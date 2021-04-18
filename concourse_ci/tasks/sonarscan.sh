@@ -1,4 +1,7 @@
 #!/bin/bash
+#!/bin/sh
+
+chmod +x concourse-ci/sonarscan.sh
 
 set -e
 

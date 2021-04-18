@@ -85,33 +85,7 @@
 					<reportsDirectory>${junit.utReportFolder}</reportsDirectory>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>${jaxb2.maven.plugin}</version>
-				<executions>
-					<execution>
-						<id>xjc</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<!-- The package of your generated sources -->
-					<!--<arguments>
-						<argument>-Xequals</argument>
-						<argument>-XhashCode</argument>
-						<argument>-XtoString</argument>
-					</arguments>-->
-
-					<sources>
-						<source>src/main/resources/xsd</source>
-					</sources>
-					<!--<laxSchemaValidation>true</laxSchemaValidation> -->
-				</configuration>
-
-			</plugin>
+		
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

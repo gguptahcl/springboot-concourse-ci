@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gg.springboot</groupId>
 	<artifactId>springboot-concourse-ci</artifactId>
@@ -15,6 +16,18 @@
 	<description>SpringBootCouchbaseIntegration</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<!-- added fromecom inventory project start -->
+		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
+		<sonar-maven-plugin.version>3.6.1.1688</sonar-maven-plugin.version>
+		<jacoco.utReportFolder>${project.build.directory}/jacoco/test</jacoco.utReportFolder>
+		<jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile>
+		<sonar.jacoco.reportPaths>${jacoco.utReportFile}</sonar.jacoco.reportPaths>
+		<project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
+		<junit.utReportFolder>${project.testresult.directory}/test</junit.utReportFolder>
+		<maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+		<argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
+		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+		<!-- added fromecom inventory project end -->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -22,11 +35,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
- 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -51,80 +64,107 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		
+
 		<dependency>
-  <groupId>junit</groupId>
-  <artifactId>junit</artifactId>
-  <version>4.13.2</version>
-</dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+		</dependency>
 	</dependencies>
 
-  <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!-- tag::plugin[] -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.3.6</version>
-                <configuration>
-                    <!--<repository>${docker.image.prefix}/${project.artifactId}</repository>-->
-			<repository>${project.artifactId}</repository>
-                    <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
-		<executions>
-			<execution>
-				<id>default</id>
-				<phase>install</phase>
-				<goals>
-					<goal>build</goal>
-					<!--<goal>push</goal>-->
-				</goals>
-			</execution>
-		</executions>
-            </plugin>
-            <!-- end::plugin[] -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<!-- Force alphabetical order to have a reproducible build -->
+					<runOrder>alphabetical</runOrder>
+					<reportsDirectory>${junit.utReportFolder}</reportsDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>${jaxb2.maven.plugin}</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- The package of your generated sources -->
+					<!--<arguments>
+						<argument>-Xequals</argument>
+						<argument>-XhashCode</argument>
+						<argument>-XtoString</argument>
+					</arguments>-->
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>${project.artifactId}</artifactId>
-                                    <version>${project.version}</version>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+					<sources>
+						<source>src/main/resources/xsd</source>
+					</sources>
+					<!--<laxSchemaValidation>true</laxSchemaValidation> -->
+				</configuration>
+
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>com/abc/batchIntegration/vo/*</exclude>
+						<exclude>com/abc/batchIntegration/domain/**</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>pre-unit-tests</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<destFile>${jacoco.utReportFile}</destFile>
+						</configuration>
+					</execution>
+					<!-- Ensures that the code coverage report for unit tests is created
+                        after unit tests have been run -->
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>${jacoco.utReportFile}</dataFile>
+							<outputEncoding>UTF-8</outputEncoding>
+							<outputDirectory>${jacoco.utReportFolder}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>${sonar-maven-plugin.version}</version>
+			</plugin>
 
 
-	<plugin>
-	    <groupId>org.apache.maven.plugins</groupId>
-   		 <artifactId>maven-surefire-plugin</artifactId>
-    		<version>2.22.1</version>
-    <configuration>
-        <useSystemClassLoader>false</useSystemClassLoader>
-    </configuration>
-</plugin>
-
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 
 
 </project>

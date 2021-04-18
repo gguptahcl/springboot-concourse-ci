@@ -22,7 +22,16 @@ jobs:
       - task: mvn-test
         file: "spring-boot-service/concourse_ci/tasks/maven-test.yml"
 
-
+  - name: unit-tests
+    public: true
+    plan:
+     - get: spring-boot-service
+       passed:
+         - build
+       trigger: true
+     - task: Unit-Testing
+       file: spring-boot-service/concourse_ci/tasks/unittest.yml
+       
   - name: sonar-scan
     public: true
     plan:

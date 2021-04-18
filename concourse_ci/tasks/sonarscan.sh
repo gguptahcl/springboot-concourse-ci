@@ -14,8 +14,8 @@ echo "The directory is "
 echo $dir
 
 
-ls
-chmod +x concourse-ci/tasks/sonarscan.sh
+ls -lt
+chmod +x concourse_ci/tasks/sonarscan.sh
 chmod +x ./mvnw
 
 

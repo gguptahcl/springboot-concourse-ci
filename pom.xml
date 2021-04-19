@@ -23,11 +23,10 @@
 		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
 		<jacoco.utReportFolder>${project.build.directory}/jacoco/test</jacoco.utReportFolder>
 		<sonar.coverage.jacoco.xmlReportPaths>${jacoco.utReportFolder}/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-		<jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile>
+		<!-- <jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile> -->
 		<!-- <sonar.jacoco.reportPath>${jacoco.utReportFile}</sonar.jacoco.reportPath> -->
 
-
-
+		<jacoco.utReportFile>jacoco.xml</jacoco.utReportFile>
 
 		<project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
 		<sonar-maven-plugin.version>3.6.1.1688</sonar-maven-plugin.version>

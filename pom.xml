@@ -18,18 +18,22 @@
 		<java.version>1.8</java.version>
 		<!-- added fromecom inventory project start -->
 		<jaxb2.maven.plugin>2.5.0</jaxb2.maven.plugin>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		
 		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-		<sonar-maven-plugin.version>3.6.1.1688</sonar-maven-plugin.version>
 		<jacoco.utReportFolder>${project.build.directory}/jacoco/test</jacoco.utReportFolder>
 		<jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile>
 		<sonar.jacoco.reportPaths>${jacoco.utReportFile}</sonar.jacoco.reportPaths>
 		<project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
+		<sonar-maven-plugin.version>3.6.1.1688</sonar-maven-plugin.version>
 		<junit.utReportFolder>${project.testresult.directory}/test</junit.utReportFolder>
 		<maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
 		<argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<!-- added fromecom inventory project end -->
+		
+		
+	
 	</properties>
 	<dependencies>
 		<dependency>

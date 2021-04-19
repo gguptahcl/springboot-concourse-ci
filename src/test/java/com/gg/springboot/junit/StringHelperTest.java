@@ -44,5 +44,21 @@ public class StringHelperTest {
 		String expected = "" ;
 		assertEquals(expected, actual);
 	}
-		
+	/*
+	 * @Test public void test_AreFirstAndLastTwoCharsSame() {
+	 * //fail("Not yet implemented"); boolean result =
+	 * helper.areFirstAndLastTwoCharactersTheSame("AAAA"); //assertEquals(result,
+	 * true); assertTrue(result); }
+	 * 
+	 * @Test public void test_AreFirstAndLastTwoCharsSame_different() {
+	 * //fail("Not yet implemented"); boolean result =
+	 * helper.areFirstAndLastTwoCharactersTheSame("ABCD"); //assertEquals(result,
+	 * true); assertFalse(result); }
+	 * 
+	 * @Test(expected = NullPointerException.class) public void
+	 * test_AreFirstAndLastTwoCharsSame_withNull() { //fail("Not yet implemented");
+	 * boolean actual = helper.areFirstAndLastTwoCharactersTheSame(null);
+	 * System.out.println("actual :"+ actual); String expected = "" ;
+	 * assertEquals(expected, actual); }
+	 */
 }

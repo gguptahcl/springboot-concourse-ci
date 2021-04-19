@@ -23,7 +23,7 @@
 		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
 		<jacoco.utReportFolder>${project.build.directory}/jacoco/test</jacoco.utReportFolder>
 		<jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile>
-		<sonar.jacoco.reportPaths>${jacoco.utReportFile}</sonar.jacoco.reportPaths>
+		<sonar.jacoco.reportPath>${jacoco.utReportFile}</sonar.jacoco.reportPath>
 		<project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
 		<sonar-maven-plugin.version>3.6.1.1688</sonar-maven-plugin.version>
 		<junit.utReportFolder>${project.testresult.directory}/test</junit.utReportFolder>
@@ -32,8 +32,6 @@
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<!-- added fromecom inventory project end -->
 		
-		
-	
 	</properties>
 	<dependencies>
 		<dependency>

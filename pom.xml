@@ -21,7 +21,7 @@
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		
 		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-		<jacoco.utReportFolder>${project.build.directory}/jacoco/test</jacoco.utReportFolder>
+		<jacoco.utReportFolder>${project.basedir}/target/jacoco/test</jacoco.utReportFolder>
 		<sonar.coverage.jacoco.xmlReportPaths>${jacoco.utReportFolder}/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 		<!-- <jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile> -->
 		<!-- <sonar.jacoco.reportPath>${jacoco.utReportFile}</sonar.jacoco.reportPath> -->

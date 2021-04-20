@@ -12,7 +12,7 @@ cd spring-boot-service
 dir=$(pwd -P)
 echo "The directory is "
 echo $dir
-
+echo "login is "
 echo $login
 
 ls -lt

@@ -41,5 +41,5 @@ jobs:
       trigger: true
     - task: code-scan
       file: spring-boot-service/concourse_ci/tasks/sonarscan.yml
-      inputs:
+      params:
       login: ((sonarqube-login)) 

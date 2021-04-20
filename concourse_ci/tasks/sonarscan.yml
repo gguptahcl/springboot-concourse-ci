@@ -7,7 +7,6 @@ image_resource:
 
 inputs:
   - name: spring-boot-service
-  - login: ((sonarqube-login))
 
 outputs:
   - name: sonar-scan-output

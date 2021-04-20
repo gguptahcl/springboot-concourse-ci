@@ -13,6 +13,7 @@ dir=$(pwd -P)
 echo "The directory is "
 echo $dir
 
+echo $login
 
 ls -lt
 chmod +x concourse_ci/tasks/sonarscan.sh
